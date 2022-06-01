@@ -1,0 +1,75 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Creating a Supportable and Maintainable System</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m40967</md:content-id>
+  <md:title>Creating a Supportable and Maintainable System</md:title>
+  <md:abstract>The most important aspect of any systems project - whether an individual tool, a product release, or a site-specific implementation - is that it is supportable: the right kind of documentation, with the proper contents, can make that goal a reality.</md:abstract>
+  <md:uuid>68f66d9b-f48e-4909-a2ee-ee252f2fb612</md:uuid>
+</metadata>
+
+<content>
+  <para id="delete_me"><title>Introduction</title>The most important aspect of any systems project - whether an individual tool, a product release, or a site-specific implementation - is that it is supportable: the right kind of documentation, with the proper contents, can make that goal a reality. This guide draws on years of experience of development, support, and site implementations of projects ranging from simple scripts to enterprise-managing environments.</para><section id="eip-67"><title>Types of Documentation</title><section id="eip-79"><title>Developer-to-Support</title><para id="eip-137">Documentation from the development team to the support team is vital. Without it, any product will succumb to unsupportability, and die. 
+<list id="eip-id1172632478612"><title>Ideal requirements from development:</title><item>the documentation of the code (javadoc, doxygen, etc)</item>
+<item>functional specification (if it exists)</item>
+<item>flow chart/schema of the way the application works</item>
+<item>what can be backed-up vs what cannot (database(s), configuration files, etc)</item>
+<item><list id="eip-id1170172327822"><title>details on the build process</title><item>source code repository view/login information</item>
+<item>ticketing system information</item>
+<item>where to get current source</item>
+<item>how to <link document="m40790" window="new">file bugs</link> (they will happen)</item>
+<item>deployment diagram</item>
+<item>the "why" of how it works (ie design/implementation choices)</item>
+<item>other software used</item>
+<item>route to provide patches either to the source or to customers (ideally, both)</item>
+<item>location(s) and format(s) of log file(s)</item>
+</list></item>
+<item><list id="eip-id1172636543960"><title>user manual</title><item>how it works</item>
+<item>features list</item>
+<item>system requirements (CPU usage, memory, disk space, etc)</item>
+<item>specific configurations needed</item>
+<item>command-line arguments/switches</item>
+<item>screenshots of operations and output</item>
+<item>user-customizable portions (eg there is a scripting component or available API)</item>
+<item>start-up and shut-down procedures</item>
+</list></item>
+<item>primary contacts for each component, aka the "escalation path"</item>
+<item><list id="eip-id1172633910996"><title>testing/QA document</title><item>where documentation is stored</item>
+<item>default application usernames/password</item>
+<item>details of server IP and default admin / oracle / websphere passwords</item>
+<item>any support SQL/tools created by the development team (for analysis, loading data, etc)</item>
+<item>all known issues with the current build</item>
+<item>"unusual" dependencies (eg if the FQDN or simple hostname is changed, the application cannot start)</item></list></item>
+<item>encouragement for feedback from Support as to what else they want to see</item></list></para><para id="eip-721"><title>Format</title>Almost equal in importance to the content of documentation is its format - the more open and accessible, the better. That may come in the form of wiki pages, html files, pure text, or PDFs. Whatever is chosen, though, needs to be easily and readily accessible to whomever needs to know - avoid proprietary formats like Microsoft Word.</para><note id="eip-320">"Support" may not exist for a given product as such - the "support" available may be in the form of a community of users with a mailing list or forum (such as is often the case with <link document="m12403" window="new">open source software</link>). The ideal documentation listed herein still applies, but its target audience will be a little different if it's not handled by a formal support group.</note></section><section id="eip-212"><title>Field-to-Support</title><para id="eip-289">When products are implemented at a customer site, ideally the vendor's support team will receive a set of handover documentation to ease their lives. At one point in my career, I was involved with creating, and then maintaining/improving, the field-to-support hand-off document for the product I worked most heavily with. That document helped alleviate headaches experienced both by support getting a new customer, and future field work wherein changes were perpetrated on an existing environment via upgrades, extensions, etc.
+<list id="eip-id1169972413290"><title>Basic components of the field-to-support documentation</title><item>customer name and contact information</item>
+<item>field representative(s) contact information</item>
+<item>platform(s) used in delivery (eg, Windows Server 2008 R2 for SQL Server host, RHEL 5.5 x64 for application, etc)</item>
+<item>hostname(s) of server(s) used in the deployment</item>
+<item>hardware specifications of the server(s) utilized (eg 8 2.4Ghz CPU cores, 16GB RAM, 73GB local storage, 300GB SAN storage, dual Gig-E (10.10.10.5 and 10.10.20.5))</item>
+<item>verification that prerequisite packages are installed (eg the out put of <code>rpm -qa</code> on a Linux system)</item>
+<item>customer sign-off on basic functionality</item>
+<item>notated list of non-tested / non-functional component(s) (and why they were not tested / don't care they don't work, etc)</item>
+<item>customer sign-off on any site-specific configurations or customizations</item>
+<item>copies of all customized configuration files</item>
+<item>copies of all field-developed add-ons / customizations</item>
+</list></para><note id="eip-846">Of course, the specific individual components of any given field-to-support hand-off documentation would be modified for a given product.</note></section><section id="eip-83"><title>Support-to-Others</title><para id="eip-409">Often enough, issues, bugs, and other "gotchas" are not found by developers or by the QA team - they are <link document="m40795">found</link> by end-users of a given tool. Documenting those items back from the field so others can benefit, or so <link document="m40790">bugs</link> can be resolved, is a great boon.
+</para><para id="eip-843">Most often, these common issues will be collated into a Frequently Asked Questions list (FAQ) or Knowledge Base (KB). FAQ and KB articles generally prove invaluable to many parties - other support engineers, customers, developers, management, sales, etc.</para><para id="eip-683"><title>Sources for KB articles</title>Knowledge Base articles generally form from two primary sources - support tickets, and forums (internally or externally facing). Common issues can often be better solved by creating one good "how-to" or "workaround" article instead of having users ask the same thing over and over again (but worded differently each time). this saves support engineer time, customer time, and makes all parties involved happier.</para><para id="eip-374"><title>Internal vs external KB articles</title>Depending on the product, there may be a wide array of information that customers "cannot know" - who wrote what, similar failures at other customers, who other customers are, etc. Likewise, some documentation available to aid in troubleshooting a problem may be in the form of saved chat transcripts, raw wiki journals, poorly-written notes, etc. It is up to the support engineer to cull both internal and external data into a form that an end-user can benefit from.</para><para id="eip-263">At one job I had, we had both internal and external sources: a wiki and a <link url="http://plone.org" window="new">Plone</link> instance were used internally, along with <link url="http://en.wikipedia.org/wiki/Internet_Relay_Chat" window="new">IRC</link>; externally we had a small-but-growing KB database. Most of us who worked in support at the time also had our own <link url="http://en.wikipedia.org/wiki/Cheat_sheet" window="new">"crib notes"</link> of things we'd run into before that we drew on to answer new issues. All of these sources were routinely exercised to help an ailing customer with his problem <foreign>du jour</foreign>.</para></section></section><section id="eip-46"><title>Extra Credits</title><para id="eip-118">Some of the materials in this guide have been adapted from content on <link url="http://stackoverflow.com/questions/tagged/support+documentation" window="new">StackOverflow.com</link> and <link url="http://serverfault.com/questions/tagged/documentation" window="new">ServerFault.com</link>.
+<list id="eip-id1167999797628"><title>Specifically the following:</title><item><link url="http://stackoverflow.com/q/205374/4418" window="new">What are the core elements to include in Support Documentation?</link></item>
+<item><link url="http://stackoverflow.com/q/4723685/4418" window="new">Support / maintenance documentation for a development team</link></item>
+<item><link url="http://stackoverflow.com/q/2946520/4418" window="new">What documentation is helpful when supporting an application?</link></item>
+<item><link url="http://serverfault.com/q/12378/2321" window="new">How do you document a network?</link></item>
+<item><link url="http://serverfault.com/q/25404/2321" window="new">Documentation As-A-Manual vs. Documentation As-A-Checklist</link></item>
+<item><link url="http://serverfault.com/q/18553/2321" window="new">Complex software installation documentation procedures or tools</link></item>
+<item><link url="http://serverfault.com/q/46273/2321" window="new">Getting started with documentation</link></item>
+<item><link url="http://serverfault.com/q/3970/2321" window="new">How are you documenting your work, processes and environment?</link></item>
+<item><link url="http://serverfault.com/q/43970/2321" window="new">How do you document windows server configurations?</link></item>
+<item><link url="http://serverfault.com/q/38326/2321" window="new">How to deliver documentation for IT tools?</link></item>
+<item><link url="http://serverfault.com/q/3043/2321" window="new">What level of documentation do you expect to be provided to you by developers?</link></item>
+<item><link url="http://serverfault.com/q/169827/2321" window="new">I am about to create a site bible aka documentation of our web server?</link></item>
+<item><link url="http://serverfault.com/q/150788/2321" window="new">How to document linux server configuration?</link></item>
+<item><link url="http://serverfault.com/q/44134/2321" window="new">How do you document your Cisco configurations?</link></item>
+<item><link url="http://serverfault.com/q/170326/2321" window="new">What to document in my network/domain?</link></item>
+<item><link url="http://serverfault.com/q/228359/2321" window="new">IT Documentation Platforms</link></item></list></para></section>
+</content>
+
+</document>
